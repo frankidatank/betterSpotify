@@ -5,6 +5,7 @@ import TrackSearchResult from "./TrackSearchResult";
 import { Container, Form } from "react-bootstrap";
 import SpotifyWebApi from "spotify-web-api-node";
 import axios from "axios";
+import "./styles.css";
 
 const spotifyApi = new SpotifyWebApi({
   clientId: "8b945ef10ea24755b83ac50cede405a0",
@@ -73,10 +74,18 @@ export default function Dashboard({ code }) {
     return () => (cancel = true);
   }, [search, accessToken]);
 
+  // let styles = { whiteSpace: "pre" };
+  // if (playingTrack) {
+  //   styles = {
+  //     whiteSpace: "pre",
+  //     backgroundImage: `url(${playingTrack.albumUrl})`,
+  //   };
+  // }
+
   return (
     <Container
-      className="d-flex flex-column py-2 bg-light rounded shadow"
-      style={{ height: "100vh" }}
+      className="d-flex flex-column py-2 bg-light rounded shadow mt-4 mb-4"
+      style={{ height: "90vh" }}
     >
       <Form.Control
         type="search"
@@ -93,7 +102,7 @@ export default function Dashboard({ code }) {
           />
         ))}
         {searchResults.length === 0 && (
-          <div className="text-center" style={{ whiteSpace: "pre" }}>
+          <div className="text-center fw-bold" style={{ whiteSpace: "pre" }}>
             {lyrics}
           </div>
         )}
